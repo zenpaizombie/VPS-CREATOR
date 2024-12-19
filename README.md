@@ -48,10 +48,10 @@ currently being supported with security updates.
 
 | Version | Supported          |
 | ------- | ------------------ |
-| u22.04  | :white_check_mark: |
-| d12  | :x:                |
-| u20.04 | :white_check_mark: |
-| d11   | :x:                |
+| ubuntu 22.04  | :white_check_mark: |
+| debain 12  | :x:                |
+| ubuntu 20.04 | :white_check_mark: |
+| debain 11   | :x:                |
 
 ## Reporting a Vulnerability
 
