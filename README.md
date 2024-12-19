@@ -8,9 +8,15 @@ pip install -r requirements.txt
 touch Dockerfile
 ```
 
-**3rd ```docker build -t ubuntu-22.04-with-tmate .```**
+**3rd** 
+```bash
+docker build -t ubuntu-22.04-with-tmate .
+```
 
-**4th ```python3 bot.py```**
+**4th**
+```bash
+python3 bot.py
+```
 
 **add token!**
 
