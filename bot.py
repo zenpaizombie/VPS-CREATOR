@@ -26,7 +26,7 @@ intents.message_content = False
 bot = commands.Bot(command_prefix='/', intents=intents)
 client = docker.from_env()
 
-whitelist_ids = {"1128161197766746213"}  # Replace with actual user IDs
+whitelist_ids = {"1152073459443191859"}  # Replace with actual user IDs
 
 # Utility Functions
 def add_to_database(userid, container_name, ssh_command):
@@ -84,7 +84,7 @@ async def capture_ssh_session_line(process):
 user_credits = {}
 
 # Cuty.io API key (Your account key)
-API_KEY = 'ebe681f9e37ef61fcfd756396'
+API_KEY = '63141635299f2f3c69f0ccab2'
 
 # Slash command: earnCredit
 @bot.tree.command(name="earncredit", description="Generate a URL to shorten and earn credits.")
@@ -93,7 +93,7 @@ async def earncredit(interaction: discord.Interaction):
     user_id = interaction.user.id
 
     # Define a default URL to shorten
-    default_url = "https://cuty.io/e58WUzLMmE3S"  # Change this as needed
+    default_url = "https://cuty.io/free1credit"  # Change this as needed
 
     # Make a request to Cuty.io API to shorten the default URL
     api_url = f"https://cutt.ly/api/api.php?key={API_KEY}&short={default_url}"
@@ -251,7 +251,7 @@ async def capture_ssh_session_line(process):
             return output.split("ssh session:")[1].strip()
     return None
 
-whitelist_ids = {"1128161197766746213"}  # Replace with actual user IDs
+whitelist_ids = {"1152073459443191859"}  # Replace with actual user IDs
 
 @bot.tree.command(name="remove-everything", description="Removes all data and containers")
 async def remove_everything(interaction: discord.Interaction):
