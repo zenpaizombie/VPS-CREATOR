@@ -28,7 +28,7 @@ python3 bot.py
 
 
 
-# Made By ZenpaiZombie
+# Customize By VPS4OwO Team
 
 ### ✨️ ``Features`` ✨️
 
