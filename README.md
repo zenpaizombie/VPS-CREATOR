@@ -1,6 +1,12 @@
-**1st pip install -r requirements.txt**
+**1st** 
+```bash
+pip install -r requirements.txt
+```
 
-**2nd ```touch Dockerfile```**
+**2nd** 
+```bash
+touch Dockerfile
+```
 
 **3rd ```docker build -t ubuntu-22.04-with-tmate .```**
 
