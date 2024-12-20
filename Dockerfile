@@ -13,8 +13,8 @@ RUN apt-get update && apt-get install -y \
     iproute2 \
     hostname \
     && rm -rf /var/lib/apt/lists/*
-RUN echo "lightcloud" > /etc/hostname
-RUN echo "127.0.0.1 lightcloud" >> /etc/hosts
+RUN echo "primenodes" > /etc/hostname
+RUN echo "127.0.0.1 primenodes" >> /etc/hosts
 
 
 CMD ["bash"]
