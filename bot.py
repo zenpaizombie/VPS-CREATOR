@@ -13,7 +13,7 @@ import asyncio
 from discord import app_commands
 import requests
 
-# Set Your Bot Token gay
+# Setup Your Bot
 TOKEN = '' #Set your Bot Token!
 RAM_LIMIT = '2g' #Set Your Own Ram How Much You Want To Give Your Users
 SERVER_LIMIT = 2 #you can change it!
@@ -92,28 +92,37 @@ async def earncredit(interaction: discord.Interaction):
     print("Received request to shorten URL")
     user_id = interaction.user.id
 
+    # Acknowledge interaction to prevent timeout
+    await interaction.response.defer()
+
     # Define a default URL to shorten
     default_url = "https://cuty.io/free1credit"  # Change this as needed
 
-    # Make a request to Cuty.io API to shorten the default URL
-    api_url = f"https://cutt.ly/api/api.php?key={API_KEY}&short={default_url}"
+    # Correct Cuty.io API endpoint
+    api_url = f"https://cuty.io/api?api={API_KEY}&url={default_url}"
     print(f"Making API call to: {api_url}")
-    response = requests.get(api_url).json()
-    print(f"API response: {response}")
 
-    # Check if the URL was successfully shortened
-    if response['url']['status'] == 7:
-        shortened_url = response['url']['shortLink']
-        credits_earned = 1  # Update to 1 credit for each shortening
+    try:
+        response = requests.get(api_url).json()
+        print(f"API response: {response}")
 
-        # Add credits to user
-        user_credits[user_id] = user_credits.get(user_id, 0) + credits_earned
+        # Extract shortened URL correctly (assuming Cuty.io returns 'shortenedUrl')
+        if "shortenedUrl" in response:
+            shortened_url = response["shortenedUrl"]
+            credits_earned = 1  # Update to 1 credit for each shortening
 
-        await interaction.response.send_message(f"Success! Here's your shortened URL: {shortened_url}. You earned {credits_earned} credit!")
-    else:
-        # Handle API error messages
-        error_message = response['url'].get('title', 'Failed to generate a shortened URL. Please try again.')
-        await interaction.response.send_message(error_message)
+            # Add credits to user
+            user_credits[user_id] = user_credits.get(user_id, 0) + credits_earned
+
+            await interaction.followup.send(
+                f"Success! Here's your shortened URL: {shortened_url}. You earned {credits_earned} credit!"
+            )
+        else:
+            await interaction.followup.send("Failed to generate a shortened URL. Please try again.")
+
+    except Exception as e:
+        print(f"Error: {e}")
+        await interaction.followup.send("An error occurred while processing your request.")
 
 # Slash command: bal
 @bot.tree.command(name="bal", description="Check your credit balance.")
